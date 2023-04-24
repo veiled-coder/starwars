@@ -9,7 +9,7 @@
 }
 .starwars-container_logo {
   font-size: 6rem;
-  color: rgb(63, 34, 191);
+  color: yellow;
 
   font-family: "jedi";
   margin: 2rem 0;
@@ -52,4 +52,11 @@ a {
   color: #ffe81f;
   text-decoration: none;
   font-size: 1.5rem;
+}
+
+
+@media(max-width:425px){
+  .starwars-container_logo{
+    font-size: 4rem;
+  }
 }
