@@ -1,0 +1,55 @@
+.starwars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@font-face {
+  font-family: "jedi";
+  src: url(../font/star_jedi/stjedise/Starjhol.ttf);
+}
+.starwars-container_logo {
+  font-size: 6rem;
+  color: yellow;
+
+  font-family: "jedi";
+  margin: 2rem 0;
+}
+.starwars-container_boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
+}
+.starwar-box {
+  border-radius: 5px;
+  background: url("https://finmavis.github.io/swapi-task/static/media/bg-card-1.0c96fd00.png");
+  padding: 2rem;
+  color: white;
+  transition: all 0.3s;
+}
+.starwar-box:hover {
+  box-shadow: 0px 0px 10px 4px #146084;
+}
+.starwar-box_title {
+  font-weight: bold;
+  font-size: 2rem;
+  overflow-wrap: break-word;
+}
+.starwar-box_date {
+  font-size: 1.4rem;
+  color: #939393;
+}
+.starwar-box_text {
+  margin: 2.5rem 0;
+  font-size: 1.6rem;
+}
+hr {
+  /* color: #8e2e2e; */
+  margin-bottom: 2rem;
+  border-color: #8e2e2e;
+}
+
+a {
+  color: #ffe81f;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
