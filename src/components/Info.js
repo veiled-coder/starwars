@@ -1,27 +1,33 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Loading from "../components/Loading";
+
+import MoreInfo from "./MoreInfo";
 
 export default function Info() {
   const { url_id } = useParams();
-  console.log("............info componnet");
-  console.log("id is" + url_id);
-  const url = `https://swapi.dev/api/films/${url_id}`;
+  const [data, setData] = useState("");
+  const [load, setLoad] = useState(true);
 
+  const url = `https://swapi.dev/api/films/${url_id}`;
   useEffect(() => {
-    try {
-      axios.get(url).then((data) => {
-        console.log(data);
-      });
-    } catch (err) {
-      console.log(err);
+    async function getMoreInfo() {
+      try {
+        let response = await axios.get(url);
+        setData(response.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoad(false)
+      }
     }
-  });
+    getMoreInfo();
+  }, [url]);
 
   return (
     <div style={{ color: "white", fontSize: "2rem" }}>
-      <NavLink to="/">RETURN HOME </NavLink>
-      Info number {url_id}
+      {load ? <Loading /> : <MoreInfo response={data} />}
     </div>
   );
 }

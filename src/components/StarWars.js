@@ -24,7 +24,6 @@ function StarWars({ movieLists }) {
   // let starwars=movieLists.data.results[1]?
   return (
     <div className="starwars-container">
-      <p className="starwars-container_logo">star wars</p>
       <div className="starwars-container_boxes">{starwars}</div>
     </div>
   );

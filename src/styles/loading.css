@@ -1,22 +1,16 @@
-
 @keyframes spin {
-    0%{
-        rotate: 0deg;
-    }
-       100%{
-        rotate: 360deg;
-    }
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
-.globe{
-    fill: #FFFF00;
-    width: 10rem;
-     
-    animation: spin 2s linear infinite ;
-    
-    
-
+.globe {
+  fill: #ffff00;
+  width: 10rem;
+  animation: spin 2s linear infinite;
 }
-.loading-container{
- 
-    text-align: center;
+.loading-container {
+  text-align: center;
 }
