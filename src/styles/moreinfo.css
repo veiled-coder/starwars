@@ -1,7 +1,6 @@
 .more-info {
   background-color: #232323;
   padding: 2rem;
- 
 }
 .back a {
   color: #9d9d91;
@@ -31,23 +30,25 @@ section {
   margin-bottom: 3rem;
 }
 
-.characters_lists {
+section div {
   display: flex;
-
   flex-wrap: wrap;
 }
-.characters_lists ul {
+section ul {
   width: 33.3%;
   padding-left: 2rem;
 }
 
 @media (max-width: 992px) {
-  .characters_lists ul {
+  section ul {
     width: 50%;
   }
 }
 @media (max-width: 625px) {
-  .characters_lists ul {
+  section ul {
     width: 100%;
+  }
+  .more-info {
+    font-size: 1.6rem;
   }
 }
