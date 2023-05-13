@@ -7,5 +7,6 @@
 **Features of the webpage:**
 - Loading ,error and data state of the api call
 - Responsive on mobile and desktop screen 
+- Using promise.All to run all api calls concurrently to reduce promise time
 
 ![STAR](https://user-images.githubusercontent.com/80168865/234702367-0c425094-3441-4116-8c83-4e1ba9f39095.png)
