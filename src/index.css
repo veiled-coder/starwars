@@ -20,7 +20,7 @@ body {
 
 #root {
   max-width: 90%;
-  width: 110rem;
+  width: 100rem;
 }
 @media (max-width: 425px) {
   html {
