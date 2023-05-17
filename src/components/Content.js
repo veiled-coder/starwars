@@ -9,6 +9,8 @@ import StarWars from "./StarWars";
 function Content() {
   const [load, setLoad] = useState(true);
   const [data, setData] = useState();
+  const [error, setError] = useState(false);
+
   const url = "https://swapi.dev/api/films";
 
   useEffect(() => {
@@ -17,17 +19,24 @@ function Content() {
         let response = await axios.get(url);
 
         setData(response);
+        setLoad(false);
+
         console.log(response);
       } catch (err) {
-        console.log(err);
-      } finally {
+        setError(true);
         setLoad(false);
+        console.log(err);
       }
     }
     getStarWars();
   }, [setData, setLoad]);
 
-  return <>{load ? <Loading /> : <StarWars movieLists={data} />}</>;
+  return (
+    <>
+      {load ? <Loading /> : <StarWars movieLists={data} />}
+      {error ? "failed to load" : ""}
+    </>
+  );
 }
 
 export default Content;
