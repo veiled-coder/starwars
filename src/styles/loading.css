@@ -8,9 +8,13 @@
 }
 .globe {
   fill: #ffff00;
-  width: 10rem;
+  height: 10rem;
+  width: auto;
   animation: spin 2s linear infinite;
 }
 .loading-container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
 }

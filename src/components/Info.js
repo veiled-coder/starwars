@@ -9,8 +9,13 @@ export default function Info() {
   const { url_id } = useParams();
   const [data, setData] = useState({});
   const [load, setLoad] = useState(true);
+  const [error, setError] = useState(false);
+
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
+  const [species, setSpecies] = useState([]);
+  const [ship, setShip] = useState([]);
+  const [vehicle, setVehicle] = useState([]);
 
   const url = `https://swapi.dev/api/films/${url_id}`;
   useEffect(() => {
@@ -18,6 +23,7 @@ export default function Info() {
       try {
         let response = await axios.get(url);
         setData(response.data);
+        console.log(response.data);
         //for each character url,make an api call
         let characters_urls = response.data.characters;
         let charactersArray = await Promise.all(
@@ -36,12 +42,46 @@ export default function Info() {
             return planetResponse.data.name; //Map will return an array of individual url data
           })
         );
+        //for each species
+
+        let specieUrls = response.data.species;
+
+        let speciesArray = await Promise.all(
+          specieUrls.map(async (url) => {
+            let specieResponse = await axios.get(url);
+            return specieResponse.data.name;
+          })
+        );
+
+        // for starships
+        let starshipUrls = response.data.starships;
+        let starshipArray = await Promise.all(
+          starshipUrls.map(async (url) => {
+            let starshipResponse =await axios.get(url);
+            return starshipResponse.data.name;
+          })
+        );
+        // for starships
+        let vehicleUrls = response.data.vehicles;
+        let vehicleArray = await Promise.all(
+          vehicleUrls.map(async (url) => {
+            let vehicleResponse = await axios.get(url);
+            return vehicleResponse.data.name;
+          })
+        );
 
         setData(response.data);
         setCharacters(charactersArray);
         setPlanets(planetsArray);
+        setSpecies(speciesArray);
+        setShip(starshipArray);
+        setVehicle(vehicleArray);
+
+        console.log(vehicleArray);
         setLoad(false);
       } catch (err) {
+        setError(true);
+        setLoad(false);
         console.log(err);
       }
     }
@@ -52,7 +92,9 @@ export default function Info() {
 
   return (
     <div style={{ color: "white", fontSize: "2rem" }}>
-      {load ? (
+      {error ? (
+        "failed to load"
+      ) : load ? (
         <Loading />
       ) : (
         <MoreInfo
@@ -62,6 +104,9 @@ export default function Info() {
           opening_crawl={opening_crawl}
           characters={characters}
           planets={planets}
+          species={species}
+          ship={ship}
+          vehicle={vehicle}
         />
       )}
     </div>
